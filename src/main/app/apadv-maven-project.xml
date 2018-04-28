@@ -27,4 +27,8 @@ http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/jso
         <http:listener config-ref="HTTP_Listener_Configuration" path="/accounts" allowedMethods="GET" doc:name="HTTP"/>
         <set-payload value="#['This is message from accounts flow']" doc:name="Set Payload"/>
     </flow>
+    <flow name="mavenCustomersFlow">
+        <http:listener config-ref="HTTP_Listener_Configuration" path="/customers" allowedMethods="GET" doc:name="HTTP"/>
+        <set-payload value="#['This is message from customers flow']" doc:name="Set Payload"/>
+    </flow>
 </mule>
