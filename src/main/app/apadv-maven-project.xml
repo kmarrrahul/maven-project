@@ -19,8 +19,12 @@ http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/jso
         </db:select>
         <json:object-to-json-transformer doc:name="Object to JSON"/>
     </flow>
-    <flow name="apadv-maven-projectFlow">
+    <flow name="messageFlow">
         <http:listener config-ref="HTTP_Listener_Configuration" path="/message" doc:name="HTTP"/>
         <set-payload value="#['Good Morning']" doc:name="Set Payload"/>
+    </flow>
+    <flow name="mavenAccountsFlow">
+        <http:listener config-ref="HTTP_Listener_Configuration" path="/accounts" allowedMethods="GET" doc:name="HTTP"/>
+        <set-payload value="#['This is message from accounts flow']" doc:name="Set Payload"/>
     </flow>
 </mule>
