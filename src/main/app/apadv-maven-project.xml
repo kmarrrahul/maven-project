@@ -22,13 +22,7 @@ http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee
     </flow>
     <flow name="getInventoryStatusFlow">
         <http:listener config-ref="HTTP_Listener_Configuration" path="/inventory" allowedMethods="GET" doc:name="HTTP" metadata:id="b6188d23-8a55-4e38-bc17-f4b6c3a1ab9d"/>
-        <dw:transform-message doc:name="Transform Message">
-            <dw:set-payload><![CDATA[%dw 1.0
-%output application/json
----
-{"message " : "This Message is coming from Inventory Flow"}
-]]></dw:set-payload>
-        </dw:transform-message>
+        <set-payload value="{&quot;Message&quot; : &quot;This is message from Inventory Module&quot;}" doc:name="Set Payload"/>
     </flow>
     <flow name="messageFlow">
         <http:listener config-ref="HTTP_Listener_Configuration" path="/message" doc:name="HTTP"/>
